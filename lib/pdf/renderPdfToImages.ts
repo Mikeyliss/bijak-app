@@ -43,7 +43,7 @@ export async function renderPdfToImages(
   const loadingTask = pdfjsLib.getDocument({
     data: new Uint8Array(buffer),
     canvasFactory: new NapiCanvasFactory()
-  });
+  } as any);
   const pdf = await loadingTask.promise;
 
   const pageCount = Math.min(pdf.numPages, maxPages);
@@ -55,7 +55,7 @@ export async function renderPdfToImages(
     const canvas = createCanvas(viewport.width, viewport.height);
     const context = canvas.getContext('2d');
 
-    await page.render({ canvasContext: context as any, viewport, canvasFactory: new NapiCanvasFactory() })
+    await page.render({ canvasContext: context, viewport, canvasFactory: new NapiCanvasFactory() } as any)
       .promise;
 
     const pngBuffer = await canvas.encode('png');
