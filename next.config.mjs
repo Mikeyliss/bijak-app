@@ -3,10 +3,11 @@ const nextConfig = {
   experimental: {
     serverActions: {
       bodySizeLimit: '25mb'
-    }
-  },
-  // @napi-rs/canvas and pdfjs-dist ship native/binary bits that shouldn't be bundled
-  serverExternalPackages: ['@napi-rs/canvas', 'pdfjs-dist']
+    },
+    // Next.js 14's name for this option (renamed to the top-level
+    // `serverExternalPackages` in Next.js 15+)
+    serverComponentsExternalPackages: ['@napi-rs/canvas', 'pdfjs-dist']
+  }
 };
 
 export default nextConfig;
