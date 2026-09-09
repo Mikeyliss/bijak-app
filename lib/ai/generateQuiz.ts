@@ -53,7 +53,7 @@ export async function generateQuiz({
 
   const genAI = new GoogleGenerativeAI(apiKey);
   const model = genAI.getGenerativeModel({
-    model: process.env.GEMINI_MODEL || 'gemini-flash-latest',
+    model: process.env.GEMINI_MODEL || 'gemini-3.1-flash-lite',
     generationConfig: {
       responseMimeType: 'application/json',
       responseSchema: quizResponseSchema as any
