@@ -4,9 +4,12 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '25mb'
     },
-    // Next.js 14's name for this option (renamed to the top-level
-    // `serverExternalPackages` in Next.js 15+)
-    serverComponentsExternalPackages: ['@napi-rs/canvas', 'pdfjs-dist']
+    serverComponentsExternalPackages: ['@napi-rs/canvas', 'pdfjs-dist'],
+    // pdfjs-dist loads its worker file dynamically at runtime, so Vercel's
+    // automatic file tracing misses it -- force-include it here.
+    outputFileTracingIncludes: {
+      '/api/generate': ['./node_modules/pdfjs-dist/legacy/build/**']
+    }
   }
 };
 
