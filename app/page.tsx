@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Brand } from '@/components/Brand';
 import { useQuiz } from '@/context/QuizContext';
 
-const SUBJECTS = ['Biology', 'Chemistry', 'Physics', 'Add Maths', 'Sejarah', 'B. Melayu'];
+const SUBJECTS = ['Biology', 'Chemistry', 'Science', 'Maths', 'Sejarah', 'B. Melayu'];
 
 export default function UploadPage() {
   const router = useRouter();
